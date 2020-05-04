@@ -21,8 +21,15 @@ namespace TagHelpers.Controllers
         [HttpPost]
         public IActionResult Add(Product product)
         {
-            ProductRepository.AddProduct(product);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                ProductRepository.AddProduct(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(product);
+            }
         }
 
         public IActionResult Edit(int Id)

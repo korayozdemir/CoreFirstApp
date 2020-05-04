@@ -23,7 +23,10 @@
                 <td>@product.Name</td>
                 <td>@product.Price</td>
                 <td>@product.Stock</td>
-                <td></td>
+                <td>
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
