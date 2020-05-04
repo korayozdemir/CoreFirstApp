@@ -13,10 +13,26 @@ namespace TagHelpers.Models
         {
             get { return _products; }
         }
-
+        static int id = 1;
         public static void AddProduct(Product product)
         {
+            product.Id = id;
             _products.Add(product);
+            id++;
+        }
+
+        public static void EditProduct(Product product)
+        {
+            Product updateProd = _products.FirstOrDefault(z => z.Id == product.Id);
+            updateProd.Name = product.Name;
+            updateProd.Price  = product.Price;
+            updateProd.Stock = product.Stock;
+        }
+
+        public static void DeleteProduct(int Id)
+        {
+            Product deleteProd = _products.FirstOrDefault(z => z.Id ==Id);
+            _products.Remove(deleteProd);
         }
 
     }

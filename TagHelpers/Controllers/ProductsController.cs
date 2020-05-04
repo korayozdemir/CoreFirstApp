@@ -24,5 +24,24 @@ namespace TagHelpers.Controllers
             ProductRepository.AddProduct(product);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int Id)
+        {
+            Product product = ProductRepository.Products.FirstOrDefault(z => z.Id == Id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            ProductRepository.EditProduct(product);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int Id)
+        {
+            ProductRepository.DeleteProduct(Id);
+            return RedirectToAction("Index");
+        }
     }
 }
